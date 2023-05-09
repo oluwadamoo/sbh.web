@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Reveal, Slide } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 const Question1 = ({
   setCurrentQuest,
 }: {
   setCurrentQuest: (val?: any) => void;
 }) => (
-  <Slide direction="down" className="flex items-center justify-center flex-1">
+  <Slide direction="down" className=" flex items-center justify-center flex-1">
     <div className="">
-      <h2 className="font-[600] text-[18px] mb-[20px]">
+      <h2 className="font-[600] sm:text-[18px] text-[16px] mb-[20px]">
         What business problem do you need help with?
       </h2>
       <form
@@ -21,7 +21,7 @@ const Question1 = ({
           type="text"
           required
           placeholder="Enter an answer"
-          className="outline-none  border-b-[2px] border-b-gray-400 w-[50vw]"
+          className="outline-none  border-b-[2px] border-b-gray-400 sm:w-[50vw] w-[70vw]"
         />
       </form>
     </div>
@@ -45,8 +45,8 @@ const Question2 = ({
   });
   return (
     <Slide direction="up" className="flex items-center justify-center flex-1">
-      <div className="max-w-[50vw]">
-        <h2 className="font-[600] text-[18px] mb-[20px] text-gray-700">
+      <div className="md:max-w-[50vw] max-w-[70vw] bg-[]">
+        <h2 className="font-[600] sm:text-[18px] text-[16px] mb-[20px] text-gray-700">
           Ok, we got that covered. But just so that we don't lose you incase you
           get disconnected or prefer to come back later, lets get to know you.{" "}
         </h2>
@@ -76,7 +76,7 @@ const Question2 = ({
               onFocus={() => setShowLabel(true)}
               type="text"
               placeholder="Enter your email"
-              className="block outline-none text-gray-600 border-b-[2px] border-b-gray-400 w-[50vw]"
+              className="block outline-none text-gray-600 border-b-[2px] border-b-gray-400 sm:w-[50vw] w-[70vw]"
             />
           </label>
         </form>
@@ -97,26 +97,20 @@ const Question3 = ({
       direction="down"
       className="flex items-center justify-center flex-1"
     >
-      <Reveal
-        onVisibilityChange={(e) => {
-          console.log(e);
-        }}
-      >
-        <div className="max-w-[50vw] flex flex-col">
-          <h2 className="font-[600] text-[18px] mb-[20px] text-gray-700">
-            Thank you for that. <br /> <br />
-            Here are some MARKETING resources for you
-          </h2>
-          <a
-            href="/sample.pdf"
-            download
-            onClick={() => setCurrentQuest((prev: number) => prev + 1)}
-            className="mt-[20px] bg-gray-300 w-fit self-end h-[45px] text-[#fff] flex items-center  px-5 rounded-[10px]"
-          >
-            Download
-          </a>
-        </div>
-      </Reveal>
+      <div className="md:max-w-[50vw] max-w-[70vw] flex flex-col">
+        <h2 className="font-[600] sm:text-[18px] text-[16px] mb-[20px] text-gray-700">
+          Thank you for that. <br /> <br />
+          Here are some MARKETING resources for you
+        </h2>
+        <a
+          href="/sample.pdf"
+          download
+          onClick={() => setCurrentQuest((prev: number) => prev + 1)}
+          className="mt-[20px] bg-gray-300 w-fit self-end h-[45px] text-[#fff] flex items-center  px-5 rounded-[10px]"
+        >
+          Download
+        </a>
+      </div>
     </Slide>
   );
 };
@@ -128,8 +122,8 @@ const Question4 = ({
   //   const [active, setActive] = useState<any>();
   return (
     <Slide direction="up" className="flex items-center justify-center flex-1">
-      <div className="max-w-[50vw] flex flex-col">
-        <h2 className="font-[600] text-[18px] mb-[20px] text-gray-700">
+      <div className="md:max-w-[50vw] max-w-[70vw] flex flex-col">
+        <h2 className="font-[600] sm:text-[18px] text-[16px] mb-[20px] text-gray-700">
           You could also join our Accountability to Profits group if you are
           interested in overcoming this problem and boosting sales to make huge
           profit
@@ -154,8 +148,8 @@ const Question5 = ({
   //   const [active, setActive] = useState<any>();
   return (
     <Slide direction="down" className="flex items-center justify-center flex-1">
-      <div className="max-w-[50vw] flex flex-col">
-        <h2 className="font-[600] text-[18px] mb-[20px] text-gray-700">
+      <div className="md:max-w-[50vw] max-w-[70vw] flex flex-col">
+        <h2 className="font-[600] sm:text-[18px] text-[16px] mb-[20px] text-gray-700">
           Other resources to solve your MARKETING problem Take our
           business/entrepreneurship course Visit our business discounted
           marketplace
@@ -177,19 +171,14 @@ function Home() {
   const [currentQuest, setCurrentQuest] = useState(1);
 
   return (
-    <div className="bg-[#fff] min-h-[100vh] w-[100%] flex text-gray-700">
+    <div className="bg-[#fff] min-h-[100vh] w-[100%] flex flex-col text-gray-700">
       <div className="p-4">
         {" "}
-        <h4 className="text-[30px] font-[900] animated-underline">SBH</h4>
+        <h4 className="text-[30px] font-[900] animated-underline w-fit">SBH</h4>
       </div>
       {/* <div className=""> */}
       {currentQuest === 1 ? (
-        <Slide
-          direction="down"
-          className="flex items-center justify-center flex-1"
-        >
-          <Question1 setCurrentQuest={setCurrentQuest} />
-        </Slide>
+        <Question1 setCurrentQuest={setCurrentQuest} />
       ) : currentQuest === 2 ? (
         <Question2 setCurrentQuest={setCurrentQuest} />
       ) : currentQuest === 3 ? (
